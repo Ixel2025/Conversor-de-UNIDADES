@@ -35,6 +35,15 @@ public class Launcher {
 
 
    }
+    private void mostrarError(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+        alert.showAndWait();
+    }
+
+
    private void inicializarCombos(){
 
        //Unidades de longitud
@@ -126,6 +135,55 @@ public class Launcher {
 
    }
 
+   private boolean sonUnidadesCompatibles(String unidadOrigen, String unidadDestino)
+   {
+       //Determina si las unidades son del mismo tipo(longitud,peso temperatura
+    String[] longitudes={"Metros","Centimetros","Pulgadas","Pies","Yardas"};
+    String[] pesos={"Kilogramos","Gramos","Libras","Onzas"};
+    String[] temperaturas ={ "Celsius","Farenheit","Kelvin"};
+
+    boolean origenEsLongitud = contiene (longitudes, unidadOrigen) ;
+    boolean destinoEsLongitud= contiene (longitudes, unidadDestino);
+    if (origenEsLongitud && destinoEsLongitud) return true;
+
+    boolean origenEsPeso = contiene (pesos, unidadOrigen);
+    boolean destinoEsPeso = contiene (pesos,unidadDestino);
+    if(origenEsPeso && destinoEsPeso) return true;
+
+    boolean originEsTemp = contiene (temperaturas,unidadOrigen);
+    boolean destinoEsTemp = contiene(temperaturas,unidadDestino);
+    if (originEsTemp && destinoEsTemp) return true;
+
+    return false;
+   }
+
+   private boolean contiene (String[] array,String valor){
+       for (String s : array){
+           if(s.equals(valor)) return true;
+       }
+       return false;
+   }
+    private double convertirABase(double valor,String unidadOrigen){
+       switch (unidadOrigen){
+           case "Metros": return valor;
+           case "Centimetros" : return valor / 100;
+           case "Pulgadas" : return valor *0.0254;
+           case "Pies" : return  valor * 0.3048;
+           case "Yardas" : return valor * 0.9144;
+
+           case "Kilogramos": return valor;
+           case "Gramos": return valor / 1000;
+           case "Libras": return valor * 0.453592;
+           case "Onzas": return valor * 0.0283495;
+
+
+           case "Celsius": return valor;
+           case "Fahrenheit": return (valor - 32) * 5/9;
+           case "Kelvin": return valor - 273.15;
+
+           default: throw new IllegalArgumentException("Unidad de origen no valida");
+       }
+    }
 
 
 }
