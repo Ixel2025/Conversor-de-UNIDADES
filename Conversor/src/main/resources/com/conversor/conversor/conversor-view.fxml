@@ -3,23 +3,25 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.conversor.conversor.ConversorController" spacing="10" alignment="CENTER">
-    <Label text="Conversor de Unidades" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.conversor.conversor.ConversorController" spacing="10" alignment="CENTER" style="-fx-background-color: #f0f8ff;">
+    <Label text="Conversor de Unidades" style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #2e8b57;"/>
 
-    <TextField fx:id="valorField" promptText="Ingrese el valor"/>
+    <TextField fx:id="valorField" promptText="Ingrese el valor" style="-fx-background-color: #fffacd; -fx-border-color: #daa520;"/>
 
     <HBox spacing="10" alignment="CENTER">
-        <ComboBox fx:id="unidadOrigenCombo" promptText="Unidad origen"/>
-        <Label text="→"/>
-        <ComboBox fx:id="unidadDestinoCombo" promptText="Unidad destino"/>
+        <ComboBox fx:id="unidadOrigenCombo" promptText="Unidad origen" style="-fx-background-color: #e6e6fa; -fx-border-color: #9370db;"/>
+        <Label text="→" style="-fx-text-fill: #4682b4;"/>
+        <ComboBox fx:id="unidadDestinoCombo" promptText="Unidad destino" style="-fx-background-color: #e6e6fa; -fx-border-color: #9370db;"/>
     </HBox>
 
-    <Button text="Convertir" onAction="#convertir"/>
-    <Button text="Limpiar" onAction="#limpiar"/>
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Convertir" onAction="#convertir" style="-fx-background-color: #98fb98; -fx-text-fill: #006400;"/>
+        <Button text="Limpiar" onAction="#limpiar" style="-fx-background-color: #ffb6c1; -fx-text-fill: #8b0000;"/>
+    </HBox>
 
-    <Label text="Resultado:"/>
-    <Label fx:id="resultadoLabel" text="0" style="-fx-font-weight: bold;"/>
+    <Label text="Resultado:" style="-fx-text-fill: #4682b4;"/>
+    <Label fx:id="resultadoLabel" text="0" style="-fx-font-weight: bold; -fx-text-fill: #ff6347; -fx-font-size: 16;"/>
 
-    <Label text="Historial:"/>
-    <TextArea fx:id="historialArea" prefHeight="100" prefWidth="300" editable="false"/>
+    <Label text="Historial:" style="-fx-text-fill: #4682b4;"/>
+    <TextArea fx:id="historialArea" prefHeight="100" prefWidth="300" editable="false" style="-fx-background-color: #fffaf0; -fx-border-color: #d2b48c;"/>
 </VBox>
