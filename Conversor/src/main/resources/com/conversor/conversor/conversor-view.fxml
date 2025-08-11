@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.conversor.conversor.ConversorController" spacing="10" alignment="CENTER">
+    <Label text="Conversor de Unidades" style="-fx-font-size: 20; -fx-font-weight: bold;"/>
+
+    <TextField fx:id="valorField" promptText="Ingrese el valor"/>
+
+    <HBox spacing="10" alignment="CENTER">
+        <ComboBox fx:id="unidadOrigenCombo" promptText="Unidad origen"/>
+        <Label text="→"/>
+        <ComboBox fx:id="unidadDestinoCombo" promptText="Unidad destino"/>
+    </HBox>
+
+    <Button text="Convertir" onAction="#convertir"/>
+    <Button text="Limpiar" onAction="#limpiar"/>
+
+    <Label text="Resultado:"/>
+    <Label fx:id="resultadoLabel" text="0" style="-fx-font-weight: bold;"/>
+
+    <Label text="Historial:"/>
+    <TextArea fx:id="historialArea" prefHeight="100" prefWidth="300" editable="false"/>
+</VBox>
